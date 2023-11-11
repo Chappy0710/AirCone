@@ -1,0 +1,89 @@
+--(EN EL CMD)
+sqlplus / as sysdba
+alter session set "_ORACLE_SCRIPT"=true;  
+create user empleadoAirCone identified by aircone;
+
+GRANT CREATE TABLE TO empleadoAirCone;
+GRANT INSERT ANY TABLE TO empleadoAirCone;
+GRANT SELECT ANY TABLE TO empleadoAirCone;
+GRANT DELETE ANY TABLE TO empleadoAirCone;
+GRANT CREATE PROCEDURE TO empleadoAirCone;
+GRANT UPDATE ANY TABLE TO empleadoAirCone;
+GRANT CREATE SESSION TO empleadoAirCone;
+
+--Crear la conexion
+Name = AirCone_Conexion
+Usuario = empleadoAirCone
+Contra = aircone
+Rol = Valor por defecto
+SID = orcl
+--CREARLO
+
+CREATE TABLE Usuario (
+    usuario_id INT PRIMARY KEY,
+    nombre_usuario VARCHAR2(30),
+    contraseña VARCHAR2(15)
+);
+
+CREATE TABLE Direccion (
+    casa_id INT PRIMARY KEY,
+    provincia VARCHAR2(15),
+    canton VARCHAR2(15),
+    distrito VARCHAR2(15),
+    codigo_postal INT
+);
+
+CREATE TABLE Cliente (
+    cliente_id INT PRIMARY KEY,
+    usuario_id INT REFERENCES Usuario(usuario_id),
+    nombre VARCHAR2(30),
+    apellidos VARCHAR2(30),
+    correo VARCHAR2(50),
+    casa_id INT REFERENCES Direccion(casa_id),
+    numero_telefono INT,
+    estado varchar2 (15));
+
+CREATE TABLE Envio (
+    envio_id INT PRIMARY KEY,
+    tipo VARCHAR2(15),
+    estado  varchar2 (15)
+);
+
+CREATE TABLE Sucursal (
+    sucursal_id INT PRIMARY KEY,
+    telefono INT,
+    horario VARCHAR2(60),
+    correo_contacto VARCHAR2(50)
+);
+
+CREATE TABLE Inventario_Producto (
+    producto_id INT PRIMARY KEY,
+    nombre_producto VARCHAR2(30),
+    cantidad_vendida INT,
+    precio_producto FLOAT,
+    mantenimiento_anual INT,
+    mantenimiento_trimestral INT,
+    sucursal_id INT REFERENCES Sucursal(sucursal_id)
+);
+
+CREATE TABLE Orden (
+    orden_id INT PRIMARY KEY,
+    total_ordenes INT,
+    metodo_pago VARCHAR2(15),
+    envio_id INT REFERENCES Envio(envio_id),
+    cliente_id INT REFERENCES Cliente(cliente_id),
+    producto_id INT REFERENCES Inventario_Producto(producto_id),
+    sucursal_id INT REFERENCES Sucursal(sucursal_id));
+    
+--Con algun user que sea SYSBDA le damos este rol a empleadoAirCone:
+GRANT UNLIMITED TABLESPACE TO empleadoAirCone;
+
+--Prueba de insersion de datos
+INSERT INTO Usuario (usuario_id, nombre_usuario, contraseña)
+VALUES (1, 'Aaron', '123');
+
+INSERT INTO Direccion (casa_id, provincia, canton, distrito, codigo_postal)
+VALUES (1, 'San Jose', 'Escazu', 'Centro', 12345);
+
+INSERT INTO Cliente (cliente_id, usuario_id, nombre, apellidos, correo, casa_id, numero_telefono, estado)
+VALUES (1, 1, 'Aaron', 'Chaves Beita', 'aaron@email.com', 1, 123456789, 'Activo');
