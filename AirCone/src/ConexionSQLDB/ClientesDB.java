@@ -30,7 +30,6 @@ public class ClientesDB {
                 cl.setCasa_id(rs.getInt("CASA_ID"));
                 cl.setNumero_telefono(rs.getInt("NUMERO_TELEFONO"));
                 cl.setEstado(rs.getString("ESTADO"));
-
                 cliente.add(cl);
 
             }
