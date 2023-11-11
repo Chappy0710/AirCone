@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 /**
@@ -38,6 +39,27 @@ public class ProductosDB {
         }
 
         return producto;
+    }
+     //Codigo para insertar datos
+    public void insertarProductos(Productos producto){
+    
+        try{
+            Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement pst = cnx.prepareStatement("INSERT INTO INVENTARIO_PRODUCTO(PRODUCTO_ID,NOMBRE_PRODUCTO,CANTIDAD_VENDIDA,PRECIO_PRODUCTO,MANTENIMIENTO_ANUAL,MANTENIMIENTO_TRIMESTRAL,SUCURSAL_ID)"
+                + "   VALUES(?,?,?,?,?,?,?)");
+            pst.setInt(1,producto.getProducto_id());
+            pst.setString(2,producto.getNombre_producto());
+            pst.setInt(3,producto.getCantidad_vendida());
+            pst.setFloat(4,producto.getPrecio_producto());
+            pst.setInt(5,producto.getMantenimiento_anual());
+            pst.setInt(6,producto.getMantenimiento_trimestral());
+            pst.setInt(7,producto.getSucursal_id());
+            pst.executeUpdate();
+            
+        } catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("Error en Insert");
+        }
     }
 
 }
