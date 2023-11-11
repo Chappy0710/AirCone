@@ -62,7 +62,7 @@ ProductosDB db = new ProductosDB();
 
             },
             new String [] {
-                "PRODUCTO_ID", "NOMBRE_PRODUCTO", "CANTIDAD_VENDIDA", "PRECIO_PRODUCTO", "CORREO", "MANTENIMIENTO_ANUAL", "MANTENIMIENTO_TRIMESTRAL"
+                "PRODUCTO_ID", "NOMBRE_PRODUCTO", "CANTIDAD_VENDIDA", "PRECIO_PRODUCTO", "MANTENIMIENTO_ANUAL", "MANTENIMIENTO_TRIMESTRAL", "SUCURSAL_ID"
             }
         ));
         jScrollPane1.setViewportView(tblProductos);
