@@ -32,6 +32,12 @@ ClientesDB db = new ClientesDB();
             cl.getCasa_id(),cl.getNumero_telefono(),cl.getEstado()}); 
     }
     }
+    
+    public void limpiarFormulario(){
+        DefaultTableModel tb=(DefaultTableModel)tblClientes.getModel();
+        for(int i=tb.getRowCount()-1;i>=0;i--)
+            tb.removeRow(i); 
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,6 +114,7 @@ ClientesDB db = new ClientesDB();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        limpiarFormulario();
         listarDatos();
     }//GEN-LAST:event_btnListarActionPerformed
 

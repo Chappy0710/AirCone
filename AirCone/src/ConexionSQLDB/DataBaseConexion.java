@@ -14,7 +14,8 @@ public class DataBaseConexion {
 
     public static Connection getConnection() {
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Class.forName("oracle.jdbc.OracleDriver");
+            //oracle.jdbc.driver.OracleDriver
             String myDB = "jdbc:oracle:thin:@localhost:1521:orcl";
             String usuario = "empleadoAirCone";
             String password = "aircone";
@@ -31,4 +32,6 @@ public class DataBaseConexion {
 
         return null;
     }
+    
+    
 }
