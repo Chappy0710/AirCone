@@ -272,6 +272,7 @@ ProductosDB db = new ProductosDB();
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         Productos pr = new Productos();
+    
         pr.setProducto_id(Integer.parseInt(txtproducto_id.getText()));
         pr.setNombre_producto(txtnombre_producto.getText());
         pr.setCantidad_vendida(Integer.parseInt(txtcantidad_vendida.getText()));

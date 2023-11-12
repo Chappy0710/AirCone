@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 /**
@@ -39,6 +40,29 @@ public class ClientesDB {
         }
 
         return cliente;
+    }
+
+    //Codigo para insertar datos
+    public void insertarClientes(Clientes cliente) {
+
+        try {
+            Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement pst = cnx.prepareStatement("INSERT INTO CLIENTES(CLIENTE_ID,USUARIO_ID,NOMBRE,APELLIDOS,CORREO,CASA_ID,NUMERO_TELEFONO,ESTADO)"
+                    + "   VALUES(?,?,?,?,?,?,?,?)");
+            pst.setInt(1, cliente.getCliente_id());
+            pst.setInt(2, cliente.getUsuario());
+            pst.setString(3, cliente.getNombre());
+            pst.setString(4, cliente.getApellidos());
+            pst.setString(5, cliente.getCorreo());
+            pst.setInt(6, cliente.getCasa_id());
+            pst.setInt(7, cliente.getNumero_telefono());
+            pst.setString(8, cliente.getEstado());
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("Error en Insert");
+        }
     }
 
 }
