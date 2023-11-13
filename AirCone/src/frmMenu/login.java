@@ -200,10 +200,10 @@ public class login extends javax.swing.JFrame {
             boolean encontrado = rs.next();
             if (encontrado) {
                 JOptionPane.showMessageDialog(null, "El Login ha sido exitoso");
-                // AQUÍ SE DEBE REFERENCIAR A DONDE SE VA AL MENU PRINCIPAL
-                Cliente ir = new Cliente();
+                menu ir = new menu();
                 ir.setVisible(true);
                 hide();
+                
             } else {
                 txtUsuario.setText("");
                 txtContra.setText("");
