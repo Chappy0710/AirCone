@@ -58,7 +58,7 @@ public class menu extends javax.swing.JFrame {
         btnClientes.setBackground(new java.awt.Color(0, 102, 204));
         btnClientes.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         btnClientes.setForeground(new java.awt.Color(255, 255, 255));
-        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frmMenu/clientes.png"))); // NOI18N
+        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clientes.png"))); // NOI18N
         btnClientes.setText("Clientes");
         btnClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,7 +69,7 @@ public class menu extends javax.swing.JFrame {
         btnProductos.setBackground(new java.awt.Color(0, 102, 204));
         btnProductos.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         btnProductos.setForeground(new java.awt.Color(255, 255, 255));
-        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frmMenu/inventario.png"))); // NOI18N
+        btnProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/inventario.png"))); // NOI18N
         btnProductos.setText("Inventario Productos");
         btnProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,25 +80,25 @@ public class menu extends javax.swing.JFrame {
         btnOrdenes.setBackground(new java.awt.Color(0, 102, 204));
         btnOrdenes.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnOrdenes.setForeground(new java.awt.Color(255, 255, 255));
-        btnOrdenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frmMenu/ordenes.png"))); // NOI18N
+        btnOrdenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ordenes.png"))); // NOI18N
         btnOrdenes.setText("Ordenes");
 
         btnsucursales.setBackground(new java.awt.Color(0, 102, 204));
         btnsucursales.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnsucursales.setForeground(new java.awt.Color(255, 255, 255));
-        btnsucursales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frmMenu/sucursal.png"))); // NOI18N
+        btnsucursales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sucursal.png"))); // NOI18N
         btnsucursales.setText("Sucursales");
 
         btnEnvios.setBackground(new java.awt.Color(0, 102, 204));
         btnEnvios.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnEnvios.setForeground(new java.awt.Color(255, 255, 255));
-        btnEnvios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frmMenu/envios.png"))); // NOI18N
+        btnEnvios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/envios.png"))); // NOI18N
         btnEnvios.setText("Envios");
 
         btndirecciones.setBackground(new java.awt.Color(0, 102, 204));
         btndirecciones.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btndirecciones.setForeground(new java.awt.Color(255, 255, 255));
-        btndirecciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frmMenu/direccion.png"))); // NOI18N
+        btndirecciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sucursal.png"))); // NOI18N
         btndirecciones.setText("Direcciones");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -147,7 +147,7 @@ public class menu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnvios)
                     .addComponent(btndirecciones))
-                .addContainerGap(364, Short.MAX_VALUE))
+                .addContainerGap(360, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -95,7 +95,7 @@
                       <Component id="btnEnvios" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btndirecciones" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="364" max="32767" attributes="0"/>
+                  <EmptySpace pref="360" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -135,7 +135,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/frmMenu/clientes.png"/>
+              <Image iconType="3" name="/images/clientes.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Clientes"/>
           </Properties>
@@ -155,7 +155,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/frmMenu/inventario.png"/>
+              <Image iconType="3" name="/images/inventario.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Inventario Productos"/>
           </Properties>
@@ -175,7 +175,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/frmMenu/ordenes.png"/>
+              <Image iconType="3" name="/images/ordenes.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ordenes"/>
           </Properties>
@@ -192,7 +192,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/frmMenu/sucursal.png"/>
+              <Image iconType="3" name="/images/sucursal.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sucursales"/>
           </Properties>
@@ -209,7 +209,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/frmMenu/envios.png"/>
+              <Image iconType="3" name="/images/envios.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Envios"/>
           </Properties>
@@ -226,7 +226,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/frmMenu/direccion.png"/>
+              <Image iconType="3" name="/images/sucursal.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Direcciones"/>
           </Properties>
