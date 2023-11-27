@@ -17,7 +17,7 @@ public class DataBaseConexion {
             Class.forName("oracle.jdbc.OracleDriver");
             //oracle.jdbc.driver.OracleDriver
             String myDB = "jdbc:oracle:thin:@localhost:1521:orcl";
-            String usuario = "empleadoAirCone";
+            String usuario = "EmpleadoAirCone";
             String password = "aircone";
 
             Connection cnx = DriverManager.getConnection(myDB, usuario, password);
