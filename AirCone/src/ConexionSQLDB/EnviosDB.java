@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class EnviosDB {
     
      //Codigo para el listado en la base de datos
-    public ArrayList<Envios> ListProducto() {
+    public ArrayList<Envios> ListEnvio() {
         ArrayList<Envios> envio = new ArrayList();
         try {
             Connection cnx = DataBaseConexion.getConnection();

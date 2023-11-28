@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class DireccionesDB {
     
     //Codigo para el listado en la base de datos
-    public ArrayList<Direcciones> ListProducto() {
+    public ArrayList<Direcciones> ListDireccion() {
         ArrayList<Direcciones> direccion = new ArrayList();
         try {
             Connection cnx = DataBaseConexion.getConnection();
