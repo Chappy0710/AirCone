@@ -82,24 +82,44 @@ public class menu extends javax.swing.JFrame {
         btnOrdenes.setForeground(new java.awt.Color(255, 255, 255));
         btnOrdenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ordenes.png"))); // NOI18N
         btnOrdenes.setText("Ordenes");
+        btnOrdenes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenesActionPerformed(evt);
+            }
+        });
 
         btnsucursales.setBackground(new java.awt.Color(0, 102, 204));
         btnsucursales.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnsucursales.setForeground(new java.awt.Color(255, 255, 255));
         btnsucursales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sucursal.png"))); // NOI18N
         btnsucursales.setText("Sucursales");
+        btnsucursales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsucursalesActionPerformed(evt);
+            }
+        });
 
         btnEnvios.setBackground(new java.awt.Color(0, 102, 204));
         btnEnvios.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnEnvios.setForeground(new java.awt.Color(255, 255, 255));
         btnEnvios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/envios.png"))); // NOI18N
         btnEnvios.setText("Envios");
+        btnEnvios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviosActionPerformed(evt);
+            }
+        });
 
         btndirecciones.setBackground(new java.awt.Color(0, 102, 204));
         btndirecciones.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btndirecciones.setForeground(new java.awt.Color(255, 255, 255));
         btndirecciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sucursal.png"))); // NOI18N
         btndirecciones.setText("Direcciones");
+        btndirecciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndireccionesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,8 +195,32 @@ public class menu extends javax.swing.JFrame {
         Producto ir = new Producto();
         ir.setVisible(true);
         hide();
-        
+
     }//GEN-LAST:event_btnProductosActionPerformed
+
+    private void btnOrdenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenesActionPerformed
+        Orden ir = new Orden();
+        ir.setVisible(true);
+        hide();
+    }//GEN-LAST:event_btnOrdenesActionPerformed
+
+    private void btnsucursalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsucursalesActionPerformed
+        Sucursal ir = new Sucursal();
+        ir.setVisible(true);
+        hide();
+    }//GEN-LAST:event_btnsucursalesActionPerformed
+
+    private void btnEnviosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviosActionPerformed
+        Envio ir = new Envio();
+        ir.setVisible(true);
+        hide();
+    }//GEN-LAST:event_btnEnviosActionPerformed
+
+    private void btndireccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndireccionesActionPerformed
+        Direccion ir = new Direccion();
+        ir.setVisible(true);
+        hide();
+    }//GEN-LAST:event_btndireccionesActionPerformed
 
     /**
      * @param args the command line arguments

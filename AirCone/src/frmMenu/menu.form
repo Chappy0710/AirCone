@@ -179,6 +179,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Ordenes"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrdenesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnsucursales">
           <Properties>
@@ -196,6 +199,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Sucursales"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnsucursalesActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnEnvios">
           <Properties>
@@ -213,6 +219,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Envios"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEnviosActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btndirecciones">
           <Properties>
@@ -230,6 +239,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Direcciones"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btndireccionesActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

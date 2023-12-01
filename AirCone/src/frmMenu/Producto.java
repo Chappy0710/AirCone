@@ -5,8 +5,14 @@
 package frmMenu;
 
 import ClasesPrincipales.Productos;
+import ConexionSQLDB.DataBaseConexion;
 import ConexionSQLDB.ProductosDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,8 +21,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Aaron
  */
 public class Producto extends javax.swing.JFrame {
-ArrayList<ClasesPrincipales.Productos>producto;
-ProductosDB db = new ProductosDB();
+
+    ArrayList<ClasesPrincipales.Productos> producto;
+    ProductosDB db = new ProductosDB();
 
     /**
      * Creates new form Productos
@@ -24,20 +31,21 @@ ProductosDB db = new ProductosDB();
     public Producto() {
         initComponents();
     }
-    
-    public void listarDatos(){
-    producto=db.ListProducto();
-    DefaultTableModel tb=(DefaultTableModel)tblProductos.getModel();
-    for(ClasesPrincipales.Productos pr:producto){
-        tb.addRow(new Object[]{pr.getProducto_id(),pr.getNombre_producto(),pr.getCantidad_vendida(),pr.getPrecio_producto(),pr.getMantenimiento_anual(),
-            pr.getMantenimiento_trimestral(),pr.getSucursal_id()}); 
+
+    public void listarDatos() {
+        producto = db.ListProducto();
+        DefaultTableModel tb = (DefaultTableModel) tblProductos.getModel();
+        for (ClasesPrincipales.Productos pr : producto) {
+            tb.addRow(new Object[]{pr.getProducto_id(), pr.getNombre_producto(), pr.getCantidad_vendida(), pr.getPrecio_producto(), pr.getMantenimiento_anual(),
+                pr.getMantenimiento_trimestral(), pr.getSucursal_id()});
+        }
     }
-    }
-    
-    public void limpiarFormulario(){
-        DefaultTableModel tb=(DefaultTableModel)tblProductos.getModel();
-        for(int i=tb.getRowCount()-1;i>=0;i--)
-            tb.removeRow(i); 
+
+    public void limpiarFormulario() {
+        DefaultTableModel tb = (DefaultTableModel) tblProductos.getModel();
+        for (int i = tb.getRowCount() - 1; i >= 0; i--) {
+            tb.removeRow(i);
+        }
     }
 
     /**
@@ -219,9 +227,19 @@ ProductosDB db = new ProductosDB();
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete (2).png"))); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/aircone.png"))); // NOI18N
         btnAtras.setText("Atrás");
@@ -294,7 +312,7 @@ ProductosDB db = new ProductosDB();
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         Productos pr = new Productos();
-    
+
         pr.setProducto_id(Integer.parseInt(txtproducto_id.getText()));
         pr.setNombre_producto(txtnombre_producto.getText());
         pr.setCantidad_vendida(Integer.parseInt(txtcantidad_vendida.getText()));
@@ -302,12 +320,12 @@ ProductosDB db = new ProductosDB();
         pr.setMantenimiento_anual(Integer.parseInt(txtmantenimiento_anual.getText()));
         pr.setMantenimiento_trimestral(Integer.parseInt(txtmantenimiento_trimestral.getText()));
         pr.setSucursal_id(Integer.parseInt(txtsucursal_id.getText()));
-        if(!"".equals(txtproducto_id.getText())&&!"".equals(txtnombre_producto.getText())&&!"".equals(txtcantidad_vendida.getText())&&!"".equals(txtprecio_producto.getText())&&!"".equals(txtmantenimiento_anual.getText())&&!"".equals(txtmantenimiento_trimestral.getText())&&!"".equals(txtsucursal_id.getText())){
-            JOptionPane.showMessageDialog(this, "Datos Inresados correctamente","",JOptionPane.INFORMATION_MESSAGE);
+        if (!"".equals(txtproducto_id.getText()) && !"".equals(txtnombre_producto.getText()) && !"".equals(txtcantidad_vendida.getText()) && !"".equals(txtprecio_producto.getText()) && !"".equals(txtmantenimiento_anual.getText()) && !"".equals(txtmantenimiento_trimestral.getText()) && !"".equals(txtsucursal_id.getText())) {
+            JOptionPane.showMessageDialog(this, "Datos Inresados correctamente", "", JOptionPane.INFORMATION_MESSAGE);
             db.insertarProductos(pr);
             limpiarFormulario();
             listarDatos();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Falta Ingresar Datos", "", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -316,8 +334,38 @@ ProductosDB db = new ProductosDB();
         menu ir = new menu();
         ir.setVisible(true);
         hide();
-        
+
     }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        Productos pr = new Productos();
+        pr.setProducto_id(Integer.parseInt(txtproducto_id.getText()));
+        Connection cnx = DataBaseConexion.getConnection();
+        try {
+            String query = ("DELETE FROM INVENTARIO_PRODUCTO WHERE producto_id=?");
+            PreparedStatement ps = cnx.prepareStatement(query);
+
+            ps.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Producto eliminado exitosamente");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (cnx != null) {
+                try {
+                    cnx.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
