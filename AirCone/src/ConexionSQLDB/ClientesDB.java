@@ -47,7 +47,7 @@ public class ClientesDB {
 
         try {
             Connection cnx = DataBaseConexion.getConnection();
-            PreparedStatement pst = cnx.prepareStatement("INSERT INTO CLIENTES(CLIENTE_ID,USUARIO_ID,NOMBRE,APELLIDOS,CORREO,CASA_ID,NUMERO_TELEFONO,ESTADO)"
+            PreparedStatement pst = cnx.prepareStatement("INSERT INTO CLIENTE(CLIENTE_ID,USUARIO_ID,NOMBRE,APELLIDOS,CORREO,CASA_ID,NUMERO_TELEFONO,ESTADO)"
                     + "   VALUES(?,?,?,?,?,?,?,?)");
             pst.setInt(1, cliente.getCliente_id());
             pst.setInt(2, cliente.getUsuario());

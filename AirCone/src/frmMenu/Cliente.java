@@ -101,20 +101,28 @@ public class Cliente extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
+        Cliente_ID.setForeground(new java.awt.Color(0, 0, 0));
         Cliente_ID.setText("Cliente ID");
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Usuario ID");
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nombre");
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Apellidos");
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Correo");
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Casa ID");
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Num Tel");
 
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Estado");
 
         txtusuario_id.addActionListener(new java.awt.event.ActionListener() {
@@ -278,7 +286,6 @@ public class Cliente extends javax.swing.JFrame {
 
     //BTN GUARDAR
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
         Clientes cl = new Clientes();
 
         cl.setCliente_id(Integer.parseInt(txtcliente_id.getText()));
