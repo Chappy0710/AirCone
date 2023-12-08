@@ -6,6 +6,10 @@ package frmMenu;
 
 import ClasesPrincipales.Clientes;
 import ConexionSQLDB.ClientesDB;
+import ConexionSQLDB.DataBaseConexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -26,6 +30,18 @@ public class Cliente extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void limpiaTxt(){
+        txtcliente_id.setText(null);
+        txtusuario_id.setText(null);
+        txtnombre.setText(null);
+        txtapellidos.setText(null);
+        txtcorreo.setText(null);
+        txtcasa_id.setText(null);
+        txtnumero_telefono.setText(null);
+        txtestado.setText(null);
+        
+    }//termina metodo
+    
     public void listarDatos() {
         cliente = db.ListCliente();
         DefaultTableModel tb = (DefaultTableModel) tblClientes.getModel();
@@ -76,6 +92,7 @@ public class Cliente extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         btnEliminar1 = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -210,6 +227,11 @@ public class Cliente extends javax.swing.JFrame {
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/aircone.png"))); // NOI18N
         btnAtras.setText("Atrás");
@@ -221,28 +243,45 @@ public class Cliente extends javax.swing.JFrame {
 
         btnEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete (2).png"))); // NOI18N
         btnEliminar1.setText("Eliminar");
+        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminar1ActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 41, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
+                        .addGap(18, 18, 18)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
+                        .addGap(18, 18, 18)
                         .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(117, 117, 117)
-                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,13 +290,18 @@ public class Cliente extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(57, 57, 57))
         );
 
@@ -320,6 +364,82 @@ public class Cliente extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAtrasActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        try{
+        Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement("SELECT * FROM CLIENTE WHERE CLIENTE_ID=?");
+            ps.setString(1, txtcliente_id.getText());
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                txtcliente_id.setText(rs.getString("CLIENTE_ID"));
+                txtusuario_id.setText(rs.getString("USUARIO_ID"));
+                txtnombre.setText(rs.getString("NOMBRE"));
+                txtapellidos.setText(rs.getString("APELLIDOS"));
+                txtcorreo.setText(rs.getString("CORREO"));
+                txtcasa_id.setText(rs.getString("CASA_ID"));
+                txtnumero_telefono.setText(rs.getString("NUMERO_TELEFONO"));
+                txtestado.setText(rs.getString("ESTADO"));
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "EL ID DE CLIENTE NO ESTÁ REGISTRADO");
+            }
+            cnx.close();
+            //aca no va limpiar 
+            
+            
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+            System.out.println("Error en Buscar");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
+        try{
+        Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement("DELETE FROM CLIENTE WHERE CLIENTE_ID=?");
+            ps.setString(1, txtcliente_id.getText());
+            if(ps.executeUpdate() >0){
+                    JOptionPane.showMessageDialog(null, "Registro borrado");
+            }else{
+                    JOptionPane.showMessageDialog(null, "Error en borrado");
+            }
+            cnx.close();
+            limpiaTxt();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Error en Eliminar");
+        }
+    }//GEN-LAST:event_btnEliminar1ActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        try{
+        Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement("UPDATE CLIENTE SET " + 
+                        "CLIENTE_ID=?, USUARIO_ID=?, NOMBRE=?, APELLIDOS=?, CORREO=?, CASA_ID=?, NUMERO_TELEFONO=?, ESTADO=?"
+                        + "WHERE CLIENTE_ID=?");
+            ps.setString(9, txtcliente_id.getText());
+            ps.setString(1, txtcliente_id.getText());
+            ps.setString(2, txtusuario_id.getText());
+            ps.setString(3, txtnombre.getText());
+            ps.setString(4, txtapellidos.getText());
+            ps.setString(5, txtcorreo.getText());
+            ps.setString(6, txtcasa_id.getText());
+            ps.setString(7, txtnumero_telefono.getText());
+            ps.setString(8, txtestado.getText());
+            if(ps.executeUpdate()>0){
+                    JOptionPane.showMessageDialog(null, "Registro modificado");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Error en modificado");
+                }
+                cnx.close();
+                limpiaTxt();     
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+            System.out.println("Error en Buscar");
+        }
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -363,6 +483,7 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar1;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
