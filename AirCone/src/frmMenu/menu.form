@@ -65,6 +65,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="btnSps" min="-2" max="-2" attributes="0"/>
                       <Component id="btnsucursales" min="-2" max="-2" attributes="0"/>
                       <Component id="btnProductos" min="-2" pref="299" max="-2" attributes="0"/>
                       <Component id="btndirecciones" min="-2" max="-2" attributes="0"/>
@@ -95,7 +96,9 @@
                       <Component id="btnEnvios" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btndirecciones" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="360" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="btnSps" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="301" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -241,6 +244,17 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btndireccionesActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnSps">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="66" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Procedimientos Almacenados"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSpsActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

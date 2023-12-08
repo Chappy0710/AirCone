@@ -42,6 +42,7 @@ public class menu extends javax.swing.JFrame {
         btnsucursales = new javax.swing.JButton();
         btnEnvios = new javax.swing.JButton();
         btndirecciones = new javax.swing.JButton();
+        btnSps = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,6 +122,14 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
+        btnSps.setBackground(new java.awt.Color(0, 102, 204));
+        btnSps.setText("Procedimientos Almacenados");
+        btnSps.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSpsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -143,6 +152,7 @@ public class menu extends javax.swing.JFrame {
                         .addGap(22, 22, 22)))
                 .addGap(127, 127, 127)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSps)
                     .addComponent(btnsucursales)
                     .addComponent(btnProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btndirecciones))
@@ -167,7 +177,9 @@ public class menu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnvios)
                     .addComponent(btndirecciones))
-                .addContainerGap(360, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(btnSps)
+                .addContainerGap(301, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,6 +196,7 @@ public class menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("deprecation")
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         //new menu().setVisible(false);
         Cliente ir = new Cliente();
@@ -191,6 +204,7 @@ public class menu extends javax.swing.JFrame {
         hide();
     }//GEN-LAST:event_btnClientesActionPerformed
 
+    @SuppressWarnings("deprecation")
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
         Producto ir = new Producto();
         ir.setVisible(true);
@@ -198,29 +212,40 @@ public class menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnProductosActionPerformed
 
+    @SuppressWarnings("deprecation")
     private void btnOrdenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenesActionPerformed
         Orden ir = new Orden();
         ir.setVisible(true);
         hide();
     }//GEN-LAST:event_btnOrdenesActionPerformed
 
+    @SuppressWarnings("deprecation")
     private void btnsucursalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsucursalesActionPerformed
         Sucursal ir = new Sucursal();
         ir.setVisible(true);
         hide();
     }//GEN-LAST:event_btnsucursalesActionPerformed
 
+    @SuppressWarnings("deprecation")
     private void btnEnviosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviosActionPerformed
         Envio ir = new Envio();
         ir.setVisible(true);
         hide();
     }//GEN-LAST:event_btnEnviosActionPerformed
 
+    @SuppressWarnings("deprecation")
     private void btndireccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndireccionesActionPerformed
         Direccion ir = new Direccion();
         ir.setVisible(true);
         hide();
     }//GEN-LAST:event_btndireccionesActionPerformed
+
+    @SuppressWarnings("deprecation")
+    private void btnSpsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpsActionPerformed
+        SPs ir = new SPs();
+        ir.setVisible(true);
+        hide();
+    }//GEN-LAST:event_btnSpsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,6 +288,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JButton btnEnvios;
     private javax.swing.JButton btnOrdenes;
     private javax.swing.JButton btnProductos;
+    private javax.swing.JButton btnSps;
     private javax.swing.JButton btndirecciones;
     private javax.swing.JButton btnsucursales;
     private javax.swing.JLabel jLabel3;

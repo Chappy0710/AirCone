@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Aaron
  */
 public class ClientesDB {
-
+    
     //Codigo para el listado en la base de datos
     public ArrayList<Clientes> ListCliente() {
         ArrayList<Clientes> cliente = new ArrayList();
