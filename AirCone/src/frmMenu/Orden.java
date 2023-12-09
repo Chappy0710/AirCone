@@ -32,11 +32,22 @@ DefaultTableModel tb=(DefaultTableModel)tblTabla.getModel();
 for(ClasesPrincipales.Ordenes ord: orden){
 tb.addRow(new Object[]{ord.getOrden_id(),ord.getTotal_ordenes(),ord.getMetodo_pago(),ord.getEnvio_id(),ord.getCliente_id(),ord.getProducto_id(),ord.getSucursal_id()});
 }}
+
 public void LimpiarFormulario(){
     DefaultTableModel tb=(DefaultTableModel)tblTabla.getModel();
     for(int i=tb.getRowCount()-1;i>=0;i--)
         tb.removeRow(i);
 }
+
+    public void limpiaTxt(){
+            txtorden_id.setText(null);
+            txttotal_ordenes.setText(null);
+            txtmetodo_pago.setText(null);
+            txtenvio_id.setText(null);
+            txtcliente_id.setText(null);
+            txtproducto_id.setText(null);
+            txtsucursal_id.setText(null);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -219,11 +230,13 @@ public void LimpiarFormulario(){
         if(!"".equals(txtorden_id.getText())&&!"".equals(txttotal_ordenes.getText())&&!"".equals(txtmetodo_pago.getText())&&!"".equals(txtenvio_id.getText())&&!"".equals(txtcliente_id.getText())&&!"".equals(txtproducto_id.getText())&&!"".equals(txtsucursal_id.getText())){
             JOptionPane.showMessageDialog(this, "Datos Ingresados correctamente","",JOptionPane.INFORMATION_MESSAGE);
             db.insertarOrdenes(ord);
+            limpiaTxt();
             LimpiarFormulario();
             ListarDatos();
         }else{
             JOptionPane.showMessageDialog(this, "Falta Ingresar Datos", "", JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
