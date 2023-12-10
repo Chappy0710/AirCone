@@ -255,7 +255,7 @@ public void LimpiarFormulario(){
             PreparedStatement ps = cnx.prepareStatement("UPDATE USUARIO SET " +
                 "USUARIO_ID=?, NOMBRE_USUARIO=?, CONTRASEÑA=?"
                 + "WHERE USUARIO_ID=?");
-            ps.setString(9, txtusuario_id.getText());
+            ps.setString(3, txtusuario_id.getText());
             ps.setString(1, txtnombre_usuario.getText());
             ps.setString(2, txtcontraseña.getText());
             if(ps.executeUpdate()>0){

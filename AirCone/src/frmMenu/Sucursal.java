@@ -312,7 +312,7 @@ public void LimpiarFormulario(){
             PreparedStatement ps = cnx.prepareStatement("UPDATE SUCURSAL SET " + 
                         "SUCURSAL_ID=?, TELEFONO=?, HORARIO=?, CORREO_CONTACTO=?"
                         + "WHERE SUCURSAL_ID=?");
-            ps.setString(9, txtsucursal_id.getText());
+            ps.setString(4, txtsucursal_id.getText());
             ps.setString(1, txttelefono.getText());
             ps.setString(2, txthorario.getText());
             ps.setString(3, txtcorreo_contacto.getText());
