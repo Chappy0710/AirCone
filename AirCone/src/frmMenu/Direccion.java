@@ -5,7 +5,11 @@
 package frmMenu;
 
 import ClasesPrincipales.Direcciones;
+import ConexionSQLDB.DataBaseConexion;
 import ConexionSQLDB.DireccionesDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -38,6 +42,14 @@ public void LimpiarFormulario(){
     for(int i=tb.getRowCount()-1;i>=0;i--)
         tb.removeRow(i);
 }
+public void limpiaTxt(){
+        txtcasa_id.setText(null);
+        txtprovincia.setText(null);
+        txtcanton.setText(null);
+        txtdistrito.setText(null);
+        txtcodigo_postal.setText(null);
+        
+    }//termina metodo
 
 
     /**
@@ -64,6 +76,10 @@ public void LimpiarFormulario(){
         txtcanton = new javax.swing.JTextField();
         txtcodigo_postal = new javax.swing.JTextField();
         txtdistrito = new javax.swing.JTextField();
+        btnGuardar1 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 204, 255));
@@ -104,6 +120,12 @@ public void LimpiarFormulario(){
 
         jLabel5.setText("CODIGO_POSTAL");
 
+        txtdistrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdistritoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -122,13 +144,13 @@ public void LimpiarFormulario(){
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(127, 127, 127)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtcasa_id, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtprovincia, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcodigo_postal, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtdistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcanton, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtcodigo_postal, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                    .addComponent(txtdistrito)
+                    .addComponent(txtcanton)
+                    .addComponent(txtprovincia)
+                    .addComponent(txtcasa_id))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,6 +178,38 @@ public void LimpiarFormulario(){
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
+        btnGuardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/aircone.png"))); // NOI18N
+        btnGuardar1.setText("Atrás");
+        btnGuardar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardar1ActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscar.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete (2).png"))); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Save_37110.png"))); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,12 +218,24 @@ public void LimpiarFormulario(){
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(53, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +247,11 @@ public void LimpiarFormulario(){
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -211,6 +281,87 @@ public void LimpiarFormulario(){
             JOptionPane.showMessageDialog(this, "Falta Ingresar Datos", "", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardar1ActionPerformed
+        // TODO add your handling code here:
+        menu ir = new menu();
+        ir.setVisible(true);
+        hide();
+    }//GEN-LAST:event_btnGuardar1ActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        try{
+            Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement("SELECT * FROM DIRECCION WHERE CASA_ID=?");
+                ps.setString(1, txtcasa_id.getText());
+                ResultSet rs = ps.executeQuery();
+                if(rs.next()){
+                    txtcasa_id.setText(rs.getString("CASA_ID"));
+                    txtprovincia.setText(rs.getString("PROVINCIA"));
+                    txtcanton.setText(rs.getString("CANTON"));
+                    txtdistrito.setText(rs.getString("DISTRITO"));
+                    txtcodigo_postal.setText(rs.getString("CODIGO_POSTAL"));
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "EL ID DE DIRECCION NO ESTÁ REGISTRADO");
+                }
+                cnx.close();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+            System.out.println("Error en Buscar");
+        }   
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        try{
+        Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement("DELETE FROM Direccion WHERE CASA_ID=?");
+            ps.setString(1, txtcasa_id.getText());
+            if(ps.executeUpdate() >0){
+                    JOptionPane.showMessageDialog(null, "Registro borrado");
+            }else{
+                    JOptionPane.showMessageDialog(null, "Error en borrado");
+            }
+            cnx.close();
+            limpiaTxt();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Error en Eliminar");
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        try{
+        Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement("UPDATE DIRECCION SET " + 
+                        "CASA_ID=?, PROVINCIA=?, CANTON=?, DISTRITO=?, CODIGO_POSTAL=?"
+                        + "WHERE CASA_ID=?");
+            ps.setString(6, txtcasa_id.getText());
+            ps.setString(1, txtcasa_id.getText());
+            ps.setString(2, txtprovincia.getText());
+            ps.setString(3, txtcanton.getText());
+            ps.setString(4, txtdistrito.getText());
+            ps.setString(5, txtcodigo_postal.getText());
+            if(ps.executeUpdate()>0){
+                    JOptionPane.showMessageDialog(null, "Registro modificado");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Error en modificado");
+                }
+                cnx.close();
+                limpiaTxt();     
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+            System.out.println("Error en Buscar");
+        }
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void txtdistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdistritoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdistritoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,8 +399,12 @@ public void LimpiarFormulario(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnGuardar1;
     private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
