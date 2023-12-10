@@ -5,7 +5,11 @@
 package frmMenu;
 
 import ClasesPrincipales.Sucursales;
+import ConexionSQLDB.DataBaseConexion;
 import ConexionSQLDB.SucursalesDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -26,6 +30,14 @@ SucursalesDB db=new SucursalesDB();
         LimpiarFormulario();
         ListarDatos();
     }
+    
+    public void limpiaTxt(){
+        txtsucursal_id.setText(null);
+        txttelefono.setText(null);
+        txthorario.setText(null);
+        txtcorreo_contacto.setText(null);     
+    }//termina metodo
+    
 public void ListarDatos(){
 sucursal=db.ListSucursal();
 DefaultTableModel tb=(DefaultTableModel)tblTabla.getModel();
@@ -46,6 +58,7 @@ public void LimpiarFormulario(){
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTabla = new javax.swing.JTable();
         btnListar = new javax.swing.JButton();
@@ -59,6 +72,12 @@ public void LimpiarFormulario(){
         jLabel4 = new javax.swing.JLabel();
         txttelefono = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnAtrás = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +98,8 @@ public void LimpiarFormulario(){
                 btnListarActionPerformed(evt);
             }
         });
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel1.setText("SUCURSAL_ID");
 
@@ -119,7 +140,7 @@ public void LimpiarFormulario(){
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txthorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -138,35 +159,81 @@ public void LimpiarFormulario(){
             }
         });
 
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete (2).png"))); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setActionCommand("Borrar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscar.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.setActionCommand("Borrar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setText("Modificar");
+        btnModificar.setActionCommand("Borrar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnAtrás.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/aircone.png"))); // NOI18N
+        btnAtrás.setText("Atrás");
+        btnAtrás.setActionCommand("Borrar");
+        btnAtrás.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrásActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(btnListar)
-                .addGap(18, 18, 18)
-                .addComponent(btnGuardar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnListar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAtrás)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 688, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtrás, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -195,6 +262,79 @@ public void LimpiarFormulario(){
             JOptionPane.showMessageDialog(this, "Falta Ingresar Datos", "", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        try{
+        Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement("DELETE FROM SUCURSAL WHERE SUCURSAL_ID=?");
+            ps.setString(1, txtsucursal_id.getText());
+            if(ps.executeUpdate() >0){
+                    JOptionPane.showMessageDialog(null, "Registro borrado");
+            }else{
+                    JOptionPane.showMessageDialog(null, "Error en borrado");
+            }
+            cnx.close();
+            limpiaTxt();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Error en Eliminar");
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        try{
+        Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement("SELECT * FROM SUCURSAL WHERE SUCURSAL_ID=?");
+            ps.setString(1, txtsucursal_id.getText());
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                txtsucursal_id.setText(rs.getString("SUCURSAL_ID"));
+                txttelefono.setText(rs.getString("TELEFONO"));
+                txthorario.setText(rs.getString("HORARIO"));
+                txtcorreo_contacto.setText(rs.getString("CORREO_CONTACTO"));
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "EL ID DE LA SUCURSAL NO ESTÁ REGISTRADO");
+            }
+            cnx.close();
+            //aca no va limpiar 
+            
+            
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+            System.out.println("Error en Buscar");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        try{
+        Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement("UPDATE SUCURSAL SET " + 
+                        "SUCURSAL_ID=?, TELEFONO=?, HORARIO=?, CORREO_CONTACTO=?"
+                        + "WHERE SUCURSAL_ID=?");
+            ps.setString(9, txtsucursal_id.getText());
+            ps.setString(1, txttelefono.getText());
+            ps.setString(2, txthorario.getText());
+            ps.setString(3, txtcorreo_contacto.getText());
+            if(ps.executeUpdate()>0){
+                    JOptionPane.showMessageDialog(null, "Registro modificado");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Error en modificado");
+                }
+                cnx.close();
+                limpiaTxt();     
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+            System.out.println("Error en Buscar");
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    @SuppressWarnings("deprecation")
+    private void btnAtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrásActionPerformed
+         menu ir = new menu();
+         ir.setVisible(true);
+         hide();
+    }//GEN-LAST:event_btnAtrásActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,8 +372,13 @@ public void LimpiarFormulario(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtrás;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
