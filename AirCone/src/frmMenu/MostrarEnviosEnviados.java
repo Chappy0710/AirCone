@@ -19,12 +19,12 @@ import javax.swing.JTextArea;
  *
  * @author Aaron
  */
-public class ObtenerClientesActivos extends javax.swing.JFrame {
+public class MostrarEnviosEnviados extends javax.swing.JFrame {
 
     /**
-     * Creates new form ObtenerClientesActivos
+     * Creates new form MostrarEnviosEnviados
      */
-    public ObtenerClientesActivos() {
+    public MostrarEnviosEnviados() {
         initComponents();
     }
 
@@ -38,27 +38,28 @@ public class ObtenerClientesActivos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnEXECObtenerClientesActivos = new javax.swing.JButton();
-        txtExec = new javax.swing.JScrollPane();
+        btnMostrarEnviosEnviados = new javax.swing.JButton();
+        txtMostrarEnviosEnviados = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         btnAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        btnEXECObtenerClientesActivos.setBackground(new java.awt.Color(0, 102, 204));
-        btnEXECObtenerClientesActivos.setText("EXEC ObtenerClientesActivos");
-        btnEXECObtenerClientesActivos.addActionListener(new java.awt.event.ActionListener() {
+        btnMostrarEnviosEnviados.setText("EXECMostrarEnviosEnviados");
+        btnMostrarEnviosEnviados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEXECObtenerClientesActivosActionPerformed(evt);
+                btnMostrarEnviosEnviadosActionPerformed(evt);
             }
         });
+
+        txtMostrarEnviosEnviados.setBackground(new java.awt.Color(255, 255, 255));
 
         jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        txtExec.setViewportView(jTextArea1);
+        txtMostrarEnviosEnviados.setViewportView(jTextArea1);
 
         btnAtras.setText("Atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -71,27 +72,24 @@ public class ObtenerClientesActivos extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtMostrarEnviosEnviados, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(289, 289, 289)
-                .addComponent(btnEXECObtenerClientesActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108)
+                .addGap(277, 277, 277)
+                .addComponent(btnMostrarEnviosEnviados, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAtras)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(txtExec, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addGap(64, 64, 64))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(txtExec, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(203, 203, 203)
+                .addGap(49, 49, 49)
+                .addComponent(txtMostrarEnviosEnviados, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEXECObtenerClientesActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMostrarEnviosEnviados, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtras))
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addGap(215, 215, 215))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -108,13 +106,13 @@ public class ObtenerClientesActivos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEXECObtenerClientesActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEXECObtenerClientesActivosActionPerformed
+    private void btnMostrarEnviosEnviadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarEnviosEnviadosActionPerformed
         try {
             // Establecer la conexión con la base de datos
             Connection cnx = DataBaseConexion.getConnection();
 
             // Llamar al procedimiento almacenado
-            CallableStatement callableStatement = cnx.prepareCall("{call ObtenerClientesActivos(?)}");
+            CallableStatement callableStatement = cnx.prepareCall("{call MostrarEnviosEnviados(?)}");
 
             // Registrar el parámetro de salida como cursor
             callableStatement.registerOutParameter(1, OracleTypes.CURSOR);
@@ -124,7 +122,7 @@ public class ObtenerClientesActivos extends javax.swing.JFrame {
             // Recuperar el resultado del cursor
             ResultSet resultSet = (ResultSet) callableStatement.getObject(1);
 
-            // Procesar el resultado y mostrarlo en tu JTextArea
+            // Procesar el resultado y mostrarlo en un JTextArea
             StringBuilder resultado = new StringBuilder();
             while (resultSet.next()) {
                 String info = resultSet.getString("info");
@@ -138,7 +136,7 @@ public class ObtenerClientesActivos extends javax.swing.JFrame {
             // Mostrar el JTextArea en un JScrollPane para permitir el desplazamiento
             JScrollPane scrollPane = new JScrollPane(textArea);
 
-            // Muestra el JScrollPane en un cuadro de diálogo o en tu interfaz gráfica según sea necesario
+            // Muestra el JScrollPane en un cuadro de diálogo
             JOptionPane.showMessageDialog(null, scrollPane, "Resultado", JOptionPane.INFORMATION_MESSAGE);
 
             // Cerrar las conexiones
@@ -151,7 +149,7 @@ public class ObtenerClientesActivos extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_btnEXECObtenerClientesActivosActionPerformed
+    }//GEN-LAST:event_btnMostrarEnviosEnviadosActionPerformed
 
     @SuppressWarnings("deprecation")
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
@@ -177,29 +175,29 @@ public class ObtenerClientesActivos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ObtenerClientesActivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MostrarEnviosEnviados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ObtenerClientesActivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MostrarEnviosEnviados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ObtenerClientesActivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MostrarEnviosEnviados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ObtenerClientesActivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MostrarEnviosEnviados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ObtenerClientesActivos().setVisible(true);
+                new MostrarEnviosEnviados().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnEXECObtenerClientesActivos;
+    private javax.swing.JButton btnMostrarEnviosEnviados;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JScrollPane txtExec;
+    private javax.swing.JScrollPane txtMostrarEnviosEnviados;
     // End of variables declaration//GEN-END:variables
 }

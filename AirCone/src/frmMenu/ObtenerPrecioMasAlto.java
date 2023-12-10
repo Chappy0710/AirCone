@@ -19,12 +19,12 @@ import javax.swing.JTextArea;
  *
  * @author Aaron
  */
-public class ObtenerClientesActivos extends javax.swing.JFrame {
+public class ObtenerPrecioMasAlto extends javax.swing.JFrame {
 
     /**
-     * Creates new form ObtenerClientesActivos
+     * Creates new form ObtenerPrecioMasAlto
      */
-    public ObtenerClientesActivos() {
+    public ObtenerPrecioMasAlto() {
         initComponents();
     }
 
@@ -38,27 +38,22 @@ public class ObtenerClientesActivos extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnEXECObtenerClientesActivos = new javax.swing.JButton();
-        txtExec = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        btnObtenerPrecioMasAlto = new javax.swing.JButton();
+        txtObtenerPrecioMasAlto = new javax.swing.JTextField();
         btnAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        btnEXECObtenerClientesActivos.setBackground(new java.awt.Color(0, 102, 204));
-        btnEXECObtenerClientesActivos.setText("EXEC ObtenerClientesActivos");
-        btnEXECObtenerClientesActivos.addActionListener(new java.awt.event.ActionListener() {
+        btnObtenerPrecioMasAlto.setText("EXECObtenerPrecioMasAlto");
+        btnObtenerPrecioMasAlto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEXECObtenerClientesActivosActionPerformed(evt);
+                btnObtenerPrecioMasAltoActionPerformed(evt);
             }
         });
 
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        txtExec.setViewportView(jTextArea1);
+        txtObtenerPrecioMasAlto.setBackground(new java.awt.Color(255, 255, 255));
 
         btnAtras.setText("Atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
@@ -72,26 +67,28 @@ public class ObtenerClientesActivos extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(289, 289, 289)
-                .addComponent(btnEXECObtenerClientesActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108)
+                .addContainerGap()
+                .addComponent(txtObtenerPrecioMasAlto))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(292, 292, 292)
+                .addComponent(btnObtenerPrecioMasAlto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                 .addComponent(btnAtras)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(txtExec, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addGap(100, 100, 100))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(txtExec, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(203, 203, 203)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEXECObtenerClientesActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAtras))
-                .addContainerGap(261, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(txtObtenerPrecioMasAlto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(154, 154, 154)
+                        .addComponent(btnObtenerPrecioMasAlto, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(202, 202, 202)
+                        .addComponent(btnAtras)))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -108,13 +105,13 @@ public class ObtenerClientesActivos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEXECObtenerClientesActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEXECObtenerClientesActivosActionPerformed
+    private void btnObtenerPrecioMasAltoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObtenerPrecioMasAltoActionPerformed
         try {
             // Establecer la conexión con la base de datos
             Connection cnx = DataBaseConexion.getConnection();
 
             // Llamar al procedimiento almacenado
-            CallableStatement callableStatement = cnx.prepareCall("{call ObtenerClientesActivos(?)}");
+            CallableStatement callableStatement = cnx.prepareCall("{call ObtenerPrecioMasAlto(?)}");
 
             // Registrar el parámetro de salida como cursor
             callableStatement.registerOutParameter(1, OracleTypes.CURSOR);
@@ -149,9 +146,7 @@ public class ObtenerClientesActivos extends javax.swing.JFrame {
             e.printStackTrace();
             // Manejar la excepción según tus necesidades
         }
-
-
-    }//GEN-LAST:event_btnEXECObtenerClientesActivosActionPerformed
+    }//GEN-LAST:event_btnObtenerPrecioMasAltoActionPerformed
 
     @SuppressWarnings("deprecation")
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
@@ -177,29 +172,28 @@ public class ObtenerClientesActivos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ObtenerClientesActivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ObtenerPrecioMasAlto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ObtenerClientesActivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ObtenerPrecioMasAlto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ObtenerClientesActivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ObtenerPrecioMasAlto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ObtenerClientesActivos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ObtenerPrecioMasAlto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ObtenerClientesActivos().setVisible(true);
+                new ObtenerPrecioMasAlto().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnEXECObtenerClientesActivos;
+    private javax.swing.JButton btnObtenerPrecioMasAlto;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JScrollPane txtExec;
+    private javax.swing.JTextField txtObtenerPrecioMasAlto;
     // End of variables declaration//GEN-END:variables
 }

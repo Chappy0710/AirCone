@@ -31,6 +31,7 @@ public class SPs extends javax.swing.JFrame {
         btnObtenerClientesActivos = new javax.swing.JButton();
         btnObtenerPrecioMasAlto = new javax.swing.JButton();
         btnMostrarEnviosEnviados = new javax.swing.JButton();
+        btnAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,12 +65,19 @@ public class SPs extends javax.swing.JFrame {
             }
         });
 
+        btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(194, 194, 194)
                         .addComponent(jLabel4))
@@ -78,7 +86,9 @@ public class SPs extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnObtenerClientesActivos)
                             .addComponent(btnMostrarEnviosEnviados)
-                            .addComponent(btnObtenerPrecioMasAlto, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(btnObtenerPrecioMasAlto, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAtras)))
                 .addContainerGap(195, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -89,7 +99,9 @@ public class SPs extends javax.swing.JFrame {
                 .addGap(126, 126, 126)
                 .addComponent(btnObtenerClientesActivos)
                 .addGap(48, 48, 48)
-                .addComponent(btnObtenerPrecioMasAlto)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnObtenerPrecioMasAlto)
+                    .addComponent(btnAtras))
                 .addGap(56, 56, 56)
                 .addComponent(btnMostrarEnviosEnviados)
                 .addContainerGap(224, Short.MAX_VALUE))
@@ -109,19 +121,33 @@ public class SPs extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("deprecation")
     private void btnObtenerClientesActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObtenerClientesActivosActionPerformed
         ObtenerClientesActivos ir = new ObtenerClientesActivos();
         ir.setVisible(true);
         hide();
     }//GEN-LAST:event_btnObtenerClientesActivosActionPerformed
 
+    @SuppressWarnings("deprecation")
     private void btnObtenerPrecioMasAltoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObtenerPrecioMasAltoActionPerformed
-        // TODO add your handling code here:
+        ObtenerPrecioMasAlto ir = new ObtenerPrecioMasAlto();
+        ir.setVisible(true);
+        hide();
     }//GEN-LAST:event_btnObtenerPrecioMasAltoActionPerformed
 
+    @SuppressWarnings("deprecation")
     private void btnMostrarEnviosEnviadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarEnviosEnviadosActionPerformed
-        // TODO add your handling code here:
+        MostrarEnviosEnviados ir = new MostrarEnviosEnviados();
+        ir.setVisible(true);
+        hide();
     }//GEN-LAST:event_btnMostrarEnviosEnviadosActionPerformed
+
+    @SuppressWarnings("deprecation")
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        menu ir = new menu();
+        ir.setVisible(true);
+        hide();
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +185,7 @@ public class SPs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnMostrarEnviosEnviados;
     private javax.swing.JButton btnObtenerClientesActivos;
     private javax.swing.JButton btnObtenerPrecioMasAlto;

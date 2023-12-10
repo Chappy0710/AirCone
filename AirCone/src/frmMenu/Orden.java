@@ -320,13 +320,14 @@ public void LimpiarFormulario(){
             PreparedStatement ps = cnx.prepareStatement("UPDATE ORDEN SET " + 
                         "ORDEN_ID=?, TOTAL_ORDENES=?, METODO_PAGO=?,ENVIO_ID=?,CLIENTE_ID=?,PRODUCTO_ID=?,SUCURSAL_ID=?"
                         + "WHERE ORDEN_ID=?");
-            ps.setString(7, txtorden_id.getText());
-            ps.setString(1, txttotal_ordenes.getText());
-            ps.setString(2, txtmetodo_pago.getText());
-            ps.setString(3, txtenvio_id.getText());
-            ps.setString(4, txtcliente_id.getText());
-            ps.setString(5, txtproducto_id.getText());
-            ps.setString(6, txtsucursal_id.getText());
+            ps.setString(8, txtorden_id.getText());
+            ps.setString(1, txtorden_id.getText());
+            ps.setString(2, txttotal_ordenes.getText());
+            ps.setString(3, txtmetodo_pago.getText());
+            ps.setString(4, txtenvio_id.getText());
+            ps.setString(5, txtcliente_id.getText());
+            ps.setString(6, txtproducto_id.getText());
+            ps.setString(7, txtsucursal_id.getText());
             if(ps.executeUpdate()>0){
                     JOptionPane.showMessageDialog(null, "Registro modificado");
                 }else{
@@ -340,6 +341,7 @@ public void LimpiarFormulario(){
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
+@SuppressWarnings("deprecation")
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
             // TODO add your handling code here:
         menu ir = new menu();
