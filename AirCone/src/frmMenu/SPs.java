@@ -65,6 +65,7 @@ public class SPs extends javax.swing.JFrame {
             }
         });
 
+        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/aircone.png"))); // NOI18N
         btnAtras.setText("Atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +105,7 @@ public class SPs extends javax.swing.JFrame {
                     .addComponent(btnAtras))
                 .addGap(56, 56, 56)
                 .addComponent(btnMostrarEnviosEnviados)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -53,8 +53,7 @@ public class ObtenerPrecioMasAlto extends javax.swing.JFrame {
             }
         });
 
-        txtObtenerPrecioMasAlto.setBackground(new java.awt.Color(255, 255, 255));
-
+        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/aircone.png"))); // NOI18N
         btnAtras.setText("Atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +71,7 @@ public class ObtenerPrecioMasAlto extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(292, 292, 292)
                 .addComponent(btnObtenerPrecioMasAlto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(btnAtras)
                 .addGap(100, 100, 100))
         );
@@ -88,7 +87,7 @@ public class ObtenerPrecioMasAlto extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(202, 202, 202)
                         .addComponent(btnAtras)))
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -78,7 +78,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                   <Component id="btnMostrarEnviosEnviados" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="224" max="32767" attributes="0"/>
+                  <EmptySpace pref="192" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -130,6 +130,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnAtras">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/aircone.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Atras"/>
           </Properties>
           <Events>
