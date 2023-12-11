@@ -44,7 +44,7 @@ public class ObtenerPrecioMasAlto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
 
         btnObtenerPrecioMasAlto.setText("EXECObtenerPrecioMasAlto");
         btnObtenerPrecioMasAlto.addActionListener(new java.awt.event.ActionListener() {
@@ -69,9 +69,9 @@ public class ObtenerPrecioMasAlto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(txtObtenerPrecioMasAlto))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(292, 292, 292)
+                .addContainerGap(289, Short.MAX_VALUE)
                 .addComponent(btnObtenerPrecioMasAlto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addGap(124, 124, 124)
                 .addComponent(btnAtras)
                 .addGap(100, 100, 100))
         );
@@ -80,13 +80,10 @@ public class ObtenerPrecioMasAlto extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(txtObtenerPrecioMasAlto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(btnObtenerPrecioMasAlto, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(202, 202, 202)
-                        .addComponent(btnAtras)))
+                .addGap(191, 191, 191)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnObtenerPrecioMasAlto, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                    .addComponent(btnAtras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(204, Short.MAX_VALUE))
         );
 

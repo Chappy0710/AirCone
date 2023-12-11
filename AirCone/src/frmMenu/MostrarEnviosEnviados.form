@@ -36,7 +36,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+          <Color blue="ff" green="cc" red="66" type="rgb"/>
         </Property>
       </Properties>
 
@@ -48,7 +48,7 @@
                   <EmptySpace min="-2" pref="277" max="-2" attributes="0"/>
                   <Component id="btnMostrarEnviosEnviados" min="-2" pref="203" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="btnAtras" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAtras" min="-2" pref="86" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -61,7 +61,7 @@
                   <EmptySpace pref="227" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnMostrarEnviosEnviados" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                      <Component id="btnAtras" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAtras" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
               </Group>
@@ -91,9 +91,6 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="jTextArea1">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
@@ -102,6 +99,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnAtras">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/aircone.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Atras"/>
           </Properties>
           <Events>

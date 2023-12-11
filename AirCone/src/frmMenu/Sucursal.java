@@ -177,6 +177,7 @@ public void LimpiarFormulario(){
             }
         });
 
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/editar.png"))); // NOI18N
         btnModificar.setText("Modificar");
         btnModificar.setActionCommand("Borrar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {

@@ -45,7 +45,7 @@ public class MostrarEnviosEnviados extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
 
         btnMostrarEnviosEnviados.setText("EXECMostrarEnviosEnviados");
         btnMostrarEnviosEnviados.addActionListener(new java.awt.event.ActionListener() {
@@ -56,11 +56,11 @@ public class MostrarEnviosEnviados extends javax.swing.JFrame {
 
         txtMostrarEnviosEnviados.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         txtMostrarEnviosEnviados.setViewportView(jTextArea1);
 
+        btnAtras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/aircone.png"))); // NOI18N
         btnAtras.setText("Atras");
         btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +77,7 @@ public class MostrarEnviosEnviados extends javax.swing.JFrame {
                 .addGap(277, 277, 277)
                 .addComponent(btnMostrarEnviosEnviados, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAtras)
+                .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64))
         );
         jPanel1Layout.setVerticalGroup(
@@ -88,7 +88,7 @@ public class MostrarEnviosEnviados extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMostrarEnviosEnviados, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAtras))
+                    .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(215, 215, 215))
         );
 

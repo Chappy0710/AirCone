@@ -88,6 +88,7 @@ public void LimpiarFormulario(){
         btnAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 204, 255));
 
         tblTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,6 +115,8 @@ public void LimpiarFormulario(){
                 btnGuardarActionPerformed(evt);
             }
         });
+
+        jPanel1.setBackground(new java.awt.Color(102, 204, 255));
 
         jLabel1.setText("ORDEN_ID");
 
@@ -153,7 +156,7 @@ public void LimpiarFormulario(){
                     .addComponent(txttotal_ordenes, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtmetodo_pago, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtproducto_id, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
