@@ -177,10 +177,14 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
+    @SuppressWarnings("deprecation")
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-        // TODO add your handling code here:
+        registro ir = new registro();
+        ir.setVisible(true);
+        hide();
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
+    @SuppressWarnings("deprecation")
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String usuario = txtUsuario.getText();
         String contra = txtContra.getText();

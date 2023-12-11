@@ -41,11 +41,11 @@ public class UsuariosDB {
     
         try{
             Connection cnx = DataBaseConexion.getConnection();
-            PreparedStatement pst = cnx.prepareStatement("INSERT INTO Usuario(USUARIO_ID,NOMBRE_USUARIO,CONTRASEÑA)"
+            PreparedStatement pst = cnx.prepareStatement("INSERT INTO USUARIO (USUARIO_ID,NOMBRE_USUARIO,CONTRASEÑA)"
                 + "   VALUES(?,?,?)");
             pst.setInt(1,usuario.getUsuario_id());
-            pst.setString(3,usuario.getNombre_usuario());
-            pst.setString(4,usuario.getContraseña());
+            pst.setString(2,usuario.getNombre_usuario());
+            pst.setString(3,usuario.getContraseña());
             pst.executeUpdate();
             
         } catch (SQLException ex){

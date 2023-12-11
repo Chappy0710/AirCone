@@ -9,6 +9,7 @@ import ConexionSQLDB.DataBaseConexion;
 import ConexionSQLDB.ProductosDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -46,6 +47,17 @@ public class Producto extends javax.swing.JFrame {
         for (int i = tb.getRowCount() - 1; i >= 0; i--) {
             tb.removeRow(i);
         }
+    }
+
+    public void limpiaTxt() {
+        txtproducto_id.setText(null);
+        txtnombre_producto.setText(null);
+        txtcantidad_vendida.setText(null);
+        txtprecio_producto.setText(null);
+        txtmantenimiento_anual.setText(null);
+        txtmantenimiento_trimestral.setText(null);
+        txtsucursal_id.setText(null);
+
     }
 
     /**
@@ -94,6 +106,7 @@ public class Producto extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
         jLabel1.setText("ID del Producto");
 
@@ -256,6 +269,13 @@ public class Producto extends javax.swing.JFrame {
             }
         });
 
+        btnModificar.setText("modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -267,10 +287,12 @@ public class Producto extends javax.swing.JFrame {
                         .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
+                        .addGap(18, 18, 18)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(btnModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1)
@@ -287,10 +309,12 @@ public class Producto extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAtras)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnModificar))
+                    .addComponent(btnAtras))
                 .addGap(63, 63, 63))
         );
 
@@ -337,6 +361,7 @@ public class Producto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    @SuppressWarnings("deprecation")
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         menu ir = new menu();
         ir.setVisible(true);
@@ -345,34 +370,76 @@ public class Producto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        Productos pr = new Productos();
-        pr.setProducto_id(Integer.parseInt(txtproducto_id.getText()));
-        Connection cnx = DataBaseConexion.getConnection();
         try {
-            String query = ("DELETE FROM INVENTARIO_PRODUCTO WHERE producto_id=?");
-            PreparedStatement ps = cnx.prepareStatement(query);
-
-            ps.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Producto eliminado exitosamente");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (cnx != null) {
-                try {
-                    cnx.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement("DELETE FROM INVENTARIO_PRODUCTO WHERE PRODUCTO_ID=?");
+            ps.setString(1, txtproducto_id.getText());
+            if (ps.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null, "Registro borrado");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error en borrado");
             }
+            cnx.close();
+            limpiaTxt();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Error en Eliminar");
         }
-
-
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        try {
+            Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement("SELECT * FROM INVENTARIO_PRODUCTO WHERE PRODUCTO_ID=?");
+            ps.setString(1, txtproducto_id.getText());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                txtproducto_id.setText(rs.getString("PRODUCTO_ID"));
+                txtnombre_producto.setText(rs.getString("NOMBRE_PRODUCTO"));
+                txtcantidad_vendida.setText(rs.getString("CANTIDAD_VENDIDA"));
+                txtprecio_producto.setText(rs.getString("PRECIO_PRODUCTO"));
+                txtmantenimiento_anual.setText(rs.getString("MANTENIMIENTO_ANUAL"));
+                txtmantenimiento_trimestral.setText(rs.getString("MANTENIMIENTO_TRIMESTRAL"));
+                txtsucursal_id.setText(rs.getString("SUCURSAL_ID"));
 
+            } else {
+                JOptionPane.showMessageDialog(null, "EL ID DE PRODUCTO NO ESTÁ REGISTRADO");
+            }
+            cnx.close();
+            //aca no va limpiar 
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("Error en Buscar");
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        try {
+            Connection cnx = DataBaseConexion.getConnection();
+            PreparedStatement ps = cnx.prepareStatement("UPDATE INVENTARIO_PRODUCTO SET "
+                    + "PRODUCTO_ID=?, NOMBRE_PRODUCTO=?, CANTIDAD_VENDIDA=?, PRECIO_PRODUCTO=?, MANTENIMIENTO_ANUAL=?, MANTENIMIENTO_TRIMESTRAL=?, SUCURSAL_ID=?"
+                    + "WHERE PRODUCTO_ID=?");
+            ps.setString(8, txtproducto_id.getText());
+            ps.setString(1, txtproducto_id.getText());
+            ps.setString(2, txtnombre_producto.getText());
+            ps.setString(3, txtcantidad_vendida.getText());
+            ps.setString(4, txtprecio_producto.getText());
+            ps.setString(5, txtmantenimiento_anual.getText());
+            ps.setString(6, txtmantenimiento_trimestral.getText());
+            ps.setString(7, txtsucursal_id.getText());
+            if (ps.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null, "Registro modificado");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error en modificado");
+            }
+            cnx.close();
+            limpiaTxt();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("Error en Buscar");
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -416,6 +483,7 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JTextField cantidad_vendida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

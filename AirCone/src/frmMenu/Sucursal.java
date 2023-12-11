@@ -312,10 +312,11 @@ public void LimpiarFormulario(){
             PreparedStatement ps = cnx.prepareStatement("UPDATE SUCURSAL SET " + 
                         "SUCURSAL_ID=?, TELEFONO=?, HORARIO=?, CORREO_CONTACTO=?"
                         + "WHERE SUCURSAL_ID=?");
-            ps.setString(4, txtsucursal_id.getText());
-            ps.setString(1, txttelefono.getText());
-            ps.setString(2, txthorario.getText());
-            ps.setString(3, txtcorreo_contacto.getText());
+            ps.setString(5, txtsucursal_id.getText());
+            ps.setString(1, txtsucursal_id.getText());
+            ps.setString(2, txttelefono.getText());
+            ps.setString(3, txthorario.getText());
+            ps.setString(4, txtcorreo_contacto.getText());
             if(ps.executeUpdate()>0){
                     JOptionPane.showMessageDialog(null, "Registro modificado");
                 }else{
@@ -325,7 +326,7 @@ public void LimpiarFormulario(){
                 limpiaTxt();     
         }catch(Exception ex){
             System.out.println(ex.getMessage());
-            System.out.println("Error en Buscar");
+            System.out.println("Error en Modificar");
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 

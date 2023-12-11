@@ -251,7 +251,7 @@ public void limpiaTxt(){
         // TODO add your handling code here:
         try{
         Connection cnx = DataBaseConexion.getConnection();
-            PreparedStatement ps = cnx.prepareStatement("DELETE FROM Envio WHERE ENVIO_ID=?");
+            PreparedStatement ps = cnx.prepareStatement("DELETE FROM ENVIO WHERE ENVIO_ID=?");
             ps.setString(1, txtenvio_id.getText());
             if(ps.executeUpdate() >0){
                     JOptionPane.showMessageDialog(null, "Registro borrado");

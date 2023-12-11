@@ -282,6 +282,7 @@ public void limpiaTxt(){
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+@SuppressWarnings("deprecation")
     private void btnGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardar1ActionPerformed
         // TODO add your handling code here:
         menu ir = new menu();

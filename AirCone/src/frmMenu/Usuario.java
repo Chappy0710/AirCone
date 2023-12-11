@@ -19,8 +19,9 @@ import javax.swing.table.DefaultTableModel;
  * @author kenneth
  */
 public class Usuario extends javax.swing.JFrame {
-    ArrayList<Usuarios>usuario;
-UsuariosDB db=new UsuariosDB();
+
+    ArrayList<Usuarios> usuario;
+    UsuariosDB db = new UsuariosDB();
 
     /**
      * Creates new form Usuario
@@ -30,24 +31,27 @@ UsuariosDB db=new UsuariosDB();
         LimpiarFormulario();
         ListarDatos();
     }
-    
-    public void limpiaTxt(){
+
+    public void limpiaTxt() {
         txtusuario_id.setText(null);
         txtnombre_usuario.setText(null);
-        txtcontraseña.setText(null); 
+        txtcontraseña.setText(null);
     }//termina metodo
-    
-public void ListarDatos(){
-usuario=db.ListUsuario();
-DefaultTableModel tb=(DefaultTableModel)tblTabla.getModel();
-for(ClasesPrincipales.Usuarios usu: usuario){
-tb.addRow(new Object[]{usu.getUsuario_id(),usu.getNombre_usuario(),usu.getContraseña()});
-}}
-public void LimpiarFormulario(){
-    DefaultTableModel tb=(DefaultTableModel)tblTabla.getModel();
-    for(int i=tb.getRowCount()-1;i>=0;i--)
-        tb.removeRow(i);
-}
+
+    public void ListarDatos() {
+        usuario = db.ListUsuario();
+        DefaultTableModel tb = (DefaultTableModel) tblTabla.getModel();
+        for (ClasesPrincipales.Usuarios usu : usuario) {
+            tb.addRow(new Object[]{usu.getUsuario_id(), usu.getNombre_usuario(), usu.getContraseña()});
+        }
+    }
+
+    public void LimpiarFormulario() {
+        DefaultTableModel tb = (DefaultTableModel) tblTabla.getModel();
+        for (int i = tb.getRowCount() - 1; i >= 0; i--) {
+            tb.removeRow(i);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -227,50 +231,51 @@ public void LimpiarFormulario(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        try{
+        try {
             Connection cnx = DataBaseConexion.getConnection();
             PreparedStatement ps = cnx.prepareStatement("SELECT * FROM USUARIO WHERE USUARIO_ID=?");
             ps.setString(1, txtusuario_id.getText());
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 txtusuario_id.setText(rs.getString("USUARIO_ID"));
                 txtnombre_usuario.setText(rs.getString("NOMBRE_USUARIO"));
                 txtcontraseña.setText(rs.getString("CONTRASEÑA"));
 
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "EL ID DEL USUARIO NO ESTÁ REGISTRADO");
             }
             cnx.close();
             //aca no va limpiar
 
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.out.println("Error en Buscar");
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        try{
+        try {
             Connection cnx = DataBaseConexion.getConnection();
-            PreparedStatement ps = cnx.prepareStatement("UPDATE USUARIO SET " +
-                "USUARIO_ID=?, NOMBRE_USUARIO=?, CONTRASEÑA=?"
-                + "WHERE USUARIO_ID=?");
+            PreparedStatement ps = cnx.prepareStatement("UPDATE USUARIO SET "
+                    + "USUARIO_ID=?, NOMBRE_USUARIO=?, CONTRASEÑA=?"
+                    + "WHERE USUARIO_ID=?");
             ps.setString(3, txtusuario_id.getText());
             ps.setString(1, txtnombre_usuario.getText());
             ps.setString(2, txtcontraseña.getText());
-            if(ps.executeUpdate()>0){
+            if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "Registro modificado");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Error en modificado");
             }
             cnx.close();
             limpiaTxt();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.out.println("Error en Buscar");
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
+    @SuppressWarnings("deprecation")
     private void btnAtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrásActionPerformed
         menu ir = new menu();
         ir.setVisible(true);
@@ -283,12 +288,12 @@ public void LimpiarFormulario(){
         usu.setUsuario_id(Integer.parseInt(txtusuario_id.getText()));
         usu.setNombre_usuario(txtnombre_usuario.getText());
         usu.setContraseña(txtcontraseña.getText());
-        if(!"".equals(txtusuario_id.getText())&&!"".equals(txtnombre_usuario.getText())&&!"".equals(txtcontraseña.getText())){
-            JOptionPane.showMessageDialog(this, "Datos Ingresados correctamente","",JOptionPane.INFORMATION_MESSAGE);
+        if (!"".equals(txtusuario_id.getText()) && !"".equals(txtnombre_usuario.getText()) && !"".equals(txtcontraseña.getText())) {
+            JOptionPane.showMessageDialog(this, "Datos Ingresados correctamente", "", JOptionPane.INFORMATION_MESSAGE);
             db.insertarUsuarios(usu);
             LimpiarFormulario();
             ListarDatos();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Falta Ingresar Datos", "", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -300,18 +305,18 @@ public void LimpiarFormulario(){
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        try{
+        try {
             Connection cnx = DataBaseConexion.getConnection();
             PreparedStatement ps = cnx.prepareStatement("DELETE FROM USUARIO WHERE USUARIO_ID=?");
             ps.setString(1, txtusuario_id.getText());
-            if(ps.executeUpdate() >0){
+            if (ps.executeUpdate() > 0) {
                 JOptionPane.showMessageDialog(null, "Registro borrado");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Error en borrado");
             }
             cnx.close();
             limpiaTxt();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Error en Eliminar");
         }
